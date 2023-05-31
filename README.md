@@ -21,3 +21,8 @@
 - ``InteliJ IDEA``
 - ``Eclipse``
 - ``MongoDB``
+
+# Pessoas Desenvolvedoras do Projeto
+
+| [<img src="https://avatars.githubusercontent.com/u/60944861?v=4" width=115><br><sub>Joel Fernandes</sub>](https://github.com/JoelFnandes) 
+| :---: 
