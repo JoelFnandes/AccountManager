@@ -14,7 +14,7 @@
 # Descrição do Projeto
  
  
-# Técnicas e tecnologias utilizadas
+# Tecnologias utilizadas
 
 - ``Java``
 - ``Spring`` 
