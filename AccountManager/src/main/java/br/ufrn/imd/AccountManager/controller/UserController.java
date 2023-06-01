@@ -32,7 +32,7 @@ public class UserController {
 		this.userService = UserService;
 	}
 
-	@GetMapping
+	@GetMapping("/listartodos")
 	public ResponseEntity<List<User>> getAllUsers() {
 		return ResponseEntity.ok(userRepository.findAll());
 	}
@@ -53,17 +53,17 @@ public class UserController {
 		return userService.validatePass(user, password);
 	}
 
-	@PostMapping
+	@PostMapping("/createuser")
 	public User createUser(@RequestBody User user) {
 		return userService.createUser(user);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public User updateUser(@PathVariable String id, @RequestBody User updatedUser) {
 		return userService.updateUser(id, updatedUser);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public void deleteUser(@PathVariable String id) {
 		userRepository.deleteById(id);
 	}
