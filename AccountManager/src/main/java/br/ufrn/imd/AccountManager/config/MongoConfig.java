@@ -10,7 +10,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "manager_accounts"; // Nome do banco de dados MongoDB
+        return "account-manager"; // Nome do banco de dados MongoDB
     }
 
     // @Bean
