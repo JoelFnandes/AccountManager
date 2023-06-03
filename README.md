@@ -36,8 +36,11 @@
 
 
 # Acesso ao Projeto
+ - Certifique-se de ter o JDK e o MongoDB devidamente instalados em sua máquina.
+ - No MongoDB, crie uma Database com o nome "account-manager" e uma Collection com o nome "users". 
  - Após baixar o Gerenciador de Contas, será necessário descompactar o projeto e importá-lo em uma IDE para desenvolvimento Java.
  - Talvez seja necessário instalar o Apache Maven e adicionar o caminho da pasta 'bin' do Maven ao variável de ambiente 'path' do sistema operacional.
+ - Com o projeto aberto na sua IDE é interessante atualizar o Maven.  Os passos podem variar um pouco entre as IDEs, mas no Eclipse, você pode simplesmente clicar com o botão direito do mouse no projeto e selecionar Maven -> Update Project. Alternativamente, você pode usar o atalho ALT + F5.
 
 # Tecnologias utilizadas
 
