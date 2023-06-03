@@ -1,4 +1,4 @@
-package br.ufrn.imd.AccountManager.service;
+package br.ufrn.imd.AccountManager.security;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -22,5 +22,14 @@ public class TokenService {
 						.toInstant(ZoneOffset.of("-03:00"))
 						
 						).sign(Algorithm.HMAC512("Secreta"));
+	}
+
+	public Object getSubject(String token) {
+		// TODO Auto-generated method stub
+		return JWT.require(Algorithm.HMAC512("Secreta"))
+				.withIssuer("User")
+				.build().verify(token)
+				.getSubject();
+		
 	}
 }

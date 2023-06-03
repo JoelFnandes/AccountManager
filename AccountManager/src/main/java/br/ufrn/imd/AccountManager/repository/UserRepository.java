@@ -9,4 +9,5 @@ import br.ufrn.imd.AccountManager.model.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 	User findByLogin(String login);
+	
 }

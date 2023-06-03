@@ -1,6 +1,5 @@
-package br.ufrn.imd.AccountManager.config;
+package br.ufrn.imd.AccountManager.security;
 
-import java.beans.Customizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,11 +10,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -23,20 +20,25 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-
+	@Autowired
+	private FilterToken filter;
+	
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     	return http
     	        .csrf(csrf -> csrf.disable())
     	        .authorizeHttpRequests(auth -> auth
+    	        	.requestMatchers(HttpMethod.POST, "/register")
+    	        	.permitAll()
     	            .requestMatchers(HttpMethod.POST, "/login")
     	            .permitAll()
-    	            .requestMatchers(HttpMethod.POST, "/home")
+    	            .requestMatchers(HttpMethod.GET, "/home")
     	            .permitAll()
     	            .anyRequest().authenticated()
     	        )
     	        .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-    	        .build();
+    	        .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
+    	    	.build();
     }
 
 
@@ -51,7 +53,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 	
-    
     
     
 }
