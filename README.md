@@ -35,7 +35,8 @@
 
 
 # Acesso ao Projeto
-  
+ - Após baixar o Gerenciador de Contas, será necessário descompactar o projeto e importá-lo em uma IDE para desenvolvimento Java.
+ - Talvez seja necessário instalar o Apache Maven e adicionar o caminho da pasta 'bin' do Maven ao variável de ambiente 'path' do sistema operacional.
 
 # Tecnologias utilizadas
 
