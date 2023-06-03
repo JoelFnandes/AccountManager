@@ -3,7 +3,8 @@ package br.ufrn.imd.AccountManager.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -54,6 +55,13 @@ public class UserController {
 		return tokenService.gerarToken(user);
 
 	}
+	
+	@PostMapping("/register")
+	@JsonView(Views.Public.class)
+	public ResponseEntity<User> createUser(@RequestBody User user) {
+	    User createdUser = userService.createUser(user);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+	}
 
 	// ListarTodos apenas se autenticado
 	@GetMapping("/users")
@@ -62,26 +70,23 @@ public class UserController {
 		return (List<User>) userRepository.findAll();
 	}
 
-	@GetMapping("/{id}")
-	public User getUserById(@PathVariable String id) {
-		return userRepository.findById(id)
-				.orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
-	}
-
-	@PostMapping("/register")
-	@JsonView(Views.Public.class)
-	public User createUser(@RequestBody User user) {
-		return userService.createUser(user);
+	@GetMapping("/users/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable String id) {
+	    User user = userRepository.findById(id)
+	            .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
+	    return ResponseEntity.ok(user);
 	}
 
 	@PutMapping("/update/{id}")
-	public User updateUser(@PathVariable String id, @RequestBody User updatedUser) {
-		return userService.updateUser(id, updatedUser);
+	public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
+	    User user = userService.updateUser(id, updatedUser);
+	    return ResponseEntity.status(HttpStatus.OK).body("Usuário "+ user.getLogin() +" atualizado com sucesso");
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteUser(@PathVariable String id) {
-		userRepository.deleteById(id);
+	public ResponseEntity<String> deleteUser(@PathVariable String id) {
+	    userRepository.deleteById(id);
+	    return ResponseEntity.status(HttpStatus.OK).body("Usuário com id "+ id +" excluído com sucesso");
 	}
 
 }
