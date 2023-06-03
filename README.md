@@ -30,7 +30,7 @@
 | /update/{id} | PUT | Atualiza os dados de um usuário específico (apenas você estiver autenticado) |
 | /delete/{id} | DEL | Deleta um usuário específico (apenas você estiver autenticado) |
 
- ### ⚠️ Atenção! para que os métodos GET, PUT, e DEL funcionem, é necessario pegar o token gerado após o login e passar na aba Authorization da requisição, definindo o type com "Baerer Token" e inserindo no campo token. Exemplo abaixo:
+ #### ⚠️ Atenção! para que os métodos GET, PUT, e DEL funcionem, é necessario pegar o token gerado após o login e passar na aba Authorization da requisição, definindo o type com "Baerer Token" e inserindo no campo token. Exemplo abaixo:
 ![image](https://github.com/JoelFnandes/AccountManager/assets/60944861/feeb0131-9cd2-42b3-a911-dbe2fd78e28d)
 
 
