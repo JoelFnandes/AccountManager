@@ -31,7 +31,8 @@
 | /delete/{id} | DEL | Deleta um usuário específico (apenas você estiver autenticado) |
 
  #### ⚠️ Atenção! para que os métodos GET, PUT, e DEL funcionem, é necessario pegar o token gerado após o login e passar na aba Authorization da requisição, definindo o type com "Baerer Token" e inserindo no campo token. Exemplo abaixo:
-![image](https://github.com/JoelFnandes/AccountManager/assets/60944861/feeb0131-9cd2-42b3-a911-dbe2fd78e28d)
+![Captura de tela 2023-06-03 071644](https://github.com/JoelFnandes/AccountManager/assets/60944861/f29630fe-1b44-4bad-ab7f-424f6304cb8d)
+
 
 
 # Acesso ao Projeto
